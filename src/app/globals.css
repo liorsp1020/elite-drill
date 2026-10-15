@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen bg-bg text-ink antialiased;
+}
+
+* {
+  @apply box-border;
+}
+
+/* Larger, thumb-friendly focus/tap feedback across every interactive element —
+   replaces the old amber ring with the new single accent color. */
+button,
+input,
+select,
+textarea {
+  @apply outline-none transition duration-200 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+}
+
+/* Buttons/cards get a subtle press-down affordance instead of desktop-style hover-only
+   feedback — this is what makes controls feel "tappable" on a phone. */
+.tap-shrink {
+  @apply transition-transform duration-150 active:scale-[0.97];
+}
+
+/* Hide scrollbars on horizontally-scrolling chip rows (category pickers, segmented
+   tabs) while keeping them fully scrollable — a common native-app touch. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth cross-fade whenever the active screen changes. */
+.screen-transition {
+  animation: fade-in 0.28s ease-out both;
+}
+
+/* Frosted-glass panel — used sparingly (e.g. small badges floating over the Hero Card's
+   gradient) to add depth without a second opaque surface color. */
+.glass {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
